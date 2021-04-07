@@ -17,10 +17,14 @@ public class Thread extends java.lang.Thread {
             Random a =new Random();
             int tempo = a.nextInt(3000) + 1000;
             sleep(tempo);
-            System.out.println("Thread: " + id +" Esperando a Thread Fidalga");
 
-
+            if(barreira.getNumberWaiting() == 1){
+                System.out.println("Cheguei, sou a Thread Fidalga! id: " + id + ", bora rodar!");
+            }else{
+                System.out.println("Thread: " + id +" Esperando a Thread Fidalga");
+            }
             barreira.await();
+
             System.out.println("Todos prontos: Executei thread: " + id);
         }catch (Exception e){
             System.out.println("deu merda");
